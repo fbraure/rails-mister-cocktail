@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="cards">
+    <% @cocktails.reverse.each do |instance| %>
+      <div class="card-trip m-4">
+        <img src="<%= Faker::Avatar.image %>" />
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to instance.name , cocktail_path(instance)%></h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
