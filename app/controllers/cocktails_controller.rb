@@ -25,7 +25,9 @@ class CocktailsController < ApplicationController
   end
 
   def update
-    if @cocktail.update(required_params)
+    @cocktail.photos.attach(params[:cocktail][:photos])
+    # TODO: Ajout de test d"upload et redirection
+    if @cocktail.update(required_params_update)
       redirect_to cocktail_path(@cocktail)
     else
       render :new
@@ -45,5 +47,8 @@ class CocktailsController < ApplicationController
 
   def required_params
     params.require(:cocktail).permit(:name, :image, photos: [])
+  end
+  def required_params_update
+    params.require(:cocktail).permit(:name, :image)
   end
 end
