@@ -8,6 +8,7 @@ local:
 
 cloudinary:
   service: Cloudinary
+  folder: "LeWagon/MisterCocktail"
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
@@ -35,3 +36,4 @@ cloudinary:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+

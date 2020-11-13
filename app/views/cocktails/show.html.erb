@@ -15,12 +15,16 @@
           </p>
         <% end %>
       </div>
-      <div id="carouselExampleSlidesOnly" class="carousel slide card-trip-user " data-ride="carousel">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <p>Caroussel</p>
         <div class="carousel-inner">
-          <% @cocktail.photos.each do |photo| %>
-            <div class="carousel-item active">
-               <%= cl_image_tag photo.key, height: 40, width: 40, crop: :fill %>
+          <div class="carousel-item active">
+              <%= cl_image_tag @cocktail.photos.first.key, height: 40, width: 40, crop: :fill %>
           </div>
+          <% @cocktail.photos[1..-1].each do |photo| %>
+            <div class="carousel-item">
+                <%= cl_image_tag photo.key, height: 40, width: 40, crop: :fill %>
+            </div>
           <% end %>
         </div>
       </div>

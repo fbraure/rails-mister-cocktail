@@ -8,6 +8,11 @@
           <%= f.input :name %>
           <%= f.input :image%>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          <div class="d-flex mb-3">
+          <% @cocktail.photos.each do |photo| %>
+               <%= cl_image_tag photo.key, height: 40, width: 40, crop: :thumb %>
+          <%end %>
+          </div>
           <%= f.button :submit, "Save Cocktail", class: "btn  btn-outline-primary"%>
           <% if params[:id].present? %>
             <%= link_to "Cancel", cocktail_path(instance), class: "btn btn-outline-danger"%>
