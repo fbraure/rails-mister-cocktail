@@ -1,43 +1,29 @@
-<div class="container">
+<div class="container ">
   <div class="card-trip">
-    <img src=<%= Faker::Avatar.image%>% />
+    <%= image_tag @cocktail.image %>
     <div class="card-trip-infos">
       <div>
-        <h2> <%= @cocktail.name %></h2>
-        <table>
-          <caption>Doses</caption>
-          <thead>
-            <tr>
-              <th>
-                Description
-              </th>
-              <th>
-                Ingrédient
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @cocktail.doses.each do |dose| %>
-              <tr>
-                <td>
-                  <%= link_to dose_path(dose), method: :delete do %>
-                    <i class="fas fa-trash-alt"></i>
-                  <% end %>
-                  <%= dose.description%>
-                </td>
-                <td><%= dose.ingredient.name%></td>
-              </tr>
+        <h2><%=@cocktail.name%></h2>
+        <% @cocktail.doses.each do |dose| %>
+          <p>
+            <%= dose.description %>
+            de
+            <%= dose.ingredient.name%>
+            <%= link_to dose_path(dose), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
             <% end %>
-          </tbody>
-        </table>
-        <div>
-          <%= link_to "Add A Dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-primary"%>
-          <%= link_to "Edit", edit_cocktail_path(@cocktail), class: "btn btn-outline-info"%>
-          <%= link_to "Delete", cocktail_path(@cocktail), class: "btn btn-outline-warning", method: :delete%>
-          <%= link_to "Cancel", cocktails_path, class: "btn btn-outline-danger"%>
-        </div>
+          </p>
+        <% end %>
       </div>
-      <%# <h2 class="card-trip-pricing"></h2> %>
+      <%# <h2 class="card-trip-pricing">£99.99</h2> %>
+      <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+    </div>
+    <div class="text-center pb-1">
+      <%= link_to "Add A Dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-primary"%>
+      <%= link_to "Edit", edit_cocktail_path(@cocktail), class: "btn btn-outline-info"%>
+      <%= link_to "Delete", cocktail_path(@cocktail), class: "btn btn-outline-warning", method: :delete,
+            data: { confirm: "Are you sure to delete ?" } %>
+      <%= link_to "Cancel", cocktails_path, class: "btn btn-outline-danger"%>
     </div>
   </div>
-  </div>
+</div>

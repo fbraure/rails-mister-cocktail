@@ -16,3 +16,10 @@ import 'bootstrap';
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import {loadDynamicCardHeaderText} from "../components/card_header";
+
+document.addEventListener('turbolinks:load', () => {
+  loadDynamicCardHeaderText();
+});
+

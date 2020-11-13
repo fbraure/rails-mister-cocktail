@@ -1,10 +1,37 @@
 <div class="container">
-  <h1>Create A Dose</h1>
-  <%= simple_form_for [@cocktail, @dose] do |f| %>
-    <%= f.input :description %>
-    <%# <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
-    <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
-    <%= f.button :submit, "Save Dose", class: "btn  btn-outline-primary"%>
-    <%= link_to "Cancel", cocktail_path(@cocktail), class: "btn btn-outline-danger"%>
-  <% end %>
+<div class="card text-center">
+  <div class="card-header" style="color: white; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=@cocktail.image%>);">
+    <%# <h1>Add a Dose</h1> %>
+    <h1>
+      <span id="card-header-typed-text"></span>
+    </h1>
+  </div>
+  <div>
+    <h5 class="card-title pt-3"><%= @cocktail.name %></h5>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <%= f.input :description %>
+            <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
+          </li>
+          <li class="list-group-item">
+            <% @cocktail.doses.each do |dose| %>
+              <p>
+                <%= dose.description %>
+                de
+                <%= dose.ingredient.name%>
+                <%= link_to dose_path(dose), method: :delete do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </p>
+            <% end %>
+          </li>
+        </ul>
+        <div class="card-footer">
+          <%= f.button :submit, "Save Dose", class: "btn  btn-outline-primary"%>
+          <%= link_to "Cancel", cocktail_path(@cocktail), class: "btn btn-outline-danger"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -6,8 +6,13 @@
       <h1>Cocktail</h1>
         <%= simple_form_for instance do |f| %>
           <%= f.input :name %>
+          <%= f.input :image%>
           <%= f.button :submit, "Save Cocktail", class: "btn  btn-outline-primary"%>
-          <%= link_to "Cancel", cocktails_path, class: "btn btn-outline-danger"%>
+          <% if params[:id].present? %>
+            <%= link_to "Cancel", cocktail_path(instance), class: "btn btn-outline-danger"%>
+          <% else %>
+            <%= link_to "Cancel", cocktails_path, class: "btn btn-outline-danger"%>
+          <% end %>
         <% end %>
       </div>
     </div>
