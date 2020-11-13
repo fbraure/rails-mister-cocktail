@@ -16,15 +16,19 @@
         <% end %>
       </div>
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-      <p>Caroussel</p>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-              <%= cl_image_tag @cocktail.photos.first.key, height: 40, width: 40, crop: :fill %>
-          </div>
-          <% @cocktail.photos[1..-1].each do |photo| %>
-            <div class="carousel-item">
-                <%= cl_image_tag photo.key, height: 40, width: 40, crop: :fill %>
+        <% unless @cocktail.photos.first.nil? %>
+          <p>Caroussel</p>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <%= cl_image_tag @cocktail.photos.first.key, height: 40, width: 40, crop: :fill %>
             </div>
+          <% end %>
+          <% unless @cocktail.photos[1..-1].nil? %>%
+            <% @cocktail.photos[1..-1].each do |photo| %>
+              <div class="carousel-item">
+                  <%= cl_image_tag photo.key, height: 40, width: 40, crop: :fill %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
