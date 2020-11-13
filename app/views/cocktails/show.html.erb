@@ -15,8 +15,17 @@
           </p>
         <% end %>
       </div>
+      <div id="carouselExampleSlidesOnly" class="carousel slide card-trip-user " data-ride="carousel">
+        <div class="carousel-inner">
+          <% @cocktail.photos.each do |photo| %>
+            <div class="carousel-item active">
+               <%= cl_image_tag photo.key, height: 40, width: 40, crop: :fill %>
+          </div>
+          <% end %>
+        </div>
+      </div>
       <%# <h2 class="card-trip-pricing">£99.99</h2> %>
-      <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+      <%# <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" /> %>
     </div>
     <div class="text-center pb-1">
       <%= link_to "Add A Dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-primary"%>
